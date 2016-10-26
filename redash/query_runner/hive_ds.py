@@ -125,7 +125,8 @@ class Hive(BaseSQLQueryRunner):
             error = "Query cancelled by user."
             json_data = None
         except Exception as e:
-            logging.exception(e)
+            error = e
+            json_data = None
             raise sys.exc_info()[1], None, sys.exc_info()[2]
         finally:
             if connection:

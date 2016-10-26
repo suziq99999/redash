@@ -187,6 +187,9 @@ class GoogleSpreadsheet(BaseQueryRunner):
         except gspread.SpreadsheetNotFound:
             error = "Spreadsheet ({}) not found. Make sure you used correct id.".format(key)
             json_data = None
+        except Exception as e:
+            error = e
+            json_data = None
 
         return json_data, error
 
